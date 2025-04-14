@@ -1,4 +1,4 @@
-# ntdsutil 
+# NTDSutil 
 ---
 Es una herramienta de línea de comandos en Windows Server que se utiliza para administrar Active Directory (AD). Es especialmente util cuando necesitas realizar tareas avazadas que no están disponibles en la interfaz gráfica(GUI).
 
