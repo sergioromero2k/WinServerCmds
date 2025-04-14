@@ -1,0 +1,30 @@
+# Eliminar un dominio huerfano
+---
+
+**Abrir el Símbolo del sistema como Administrador**   
+    Presiona Win + R, escribe cmd, y presiona Ctrl + Shift + Enter para abrir con privilegios de administrador.
+
+```powershell
+
+
+ntdsutil
+metadata cleanup            # Entrar en el modo de limpieza de metadatos
+
+connections                 # Conectar al servidor Active Directory
+connect to server dc01
+quit
+
+select operation target     # Seleccionar el dominio huérfano
+list domains                # Listar los dominios disponibles
+                            # Aquí verás una lista de dominios en el bosque con un número de identificación.
+                            
+select domain <ID_Dominio>  # Seleccionar el dominio que quieres eliminar
+                            # Reemplaza <ID_Dominio> con el número que apareció en el paso anterior.
+
+remove selected domain      # Eliminar el dominio seleccionado, Confirma la eliminación si se te solicita.
+```
+## Verificación y limpieza adicional
+
+✅ Después de esto, revisa en dsa.msc (Active Directory Users and Computers) si el dominio eliminado aún aparece.
+✅ Verifica en dnsmgmt.msc (Administrador de DNS) si hay registros del dominio y elimínalos manualmente.
+✅ Reinicia el servidor para aplicar los cambios.
